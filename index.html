@@ -210,6 +210,8 @@
       const replay = document.querySelector(".replay");
 
       function play() {
+        openFullscreen();
+
         _(".start").fade("out", 500);
         _(".replay").fade("out", 500);
 
@@ -231,6 +233,21 @@
       replay.addEventListener("click", function () {
         play();
       });
+
+      function openFullscreen() {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          /* Firefox */
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          /* Chrome, Safari & Opera */
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          /* IE/Edge */
+          document.documentElement.msRequestFullscreen();
+        }
+      }
     </script>
   </body>
 </html>
